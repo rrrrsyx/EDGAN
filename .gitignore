@@ -14,4 +14,3 @@ runs/
 Thumbs.db
 checkpoints/*
 !checkpoints/codec_weights.pt
-!checkpoints/manifest.json
