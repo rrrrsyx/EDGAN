@@ -1,0 +1,27 @@
+{
+  "format": "PyTorch checkpoint with encoder, decoder, model_config, and source hashes",
+  "file": "codec_weights.pt",
+  "sha256": "d4fcb2a5a3866cdbd6a8ca2cd8db1bffc4d66c868f753f7bcb0f96cc61caa38c",
+  "bytes": 171111214,
+  "encoder": {
+    "joint_training_step": 190000,
+    "source_checkpoint_sha256": "08852abb99e9a9a66163e674f8c128eaede0b1a16346dc0469ce44357f229081",
+    "tensor_count": 40,
+    "tensor_bytes": 165931680
+  },
+  "decoder": {
+    "checkpoint_step": 200000,
+    "additional_decoder_only_steps": 10000,
+    "selection": "The single main decoder used in the aligned main tests; not an image-attack-specific decoder.",
+    "source_checkpoint_sha256": "7e2ade9d4ba15920f3e1feee7f4c9ba2082b19a2a303f8a2d9c8bc4c0d2dfea4",
+    "tensor_count": 22,
+    "tensor_bytes": 5158208
+  },
+  "verified_against": [
+    "sd15_ddim_aligned_1000_fixed11_20261012",
+    "20261014_aligned1000",
+    "sd15_gs_aligned_5000_extend1000_20261016"
+  ],
+  "source_tensor_equality_verified": true,
+  "model_code_sha256": "35209b1626703e94f3c558fda7a75be41d3f5654d7cc791ef27f8d7975cb534d"
+}

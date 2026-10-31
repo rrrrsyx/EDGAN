@@ -1,0 +1,124 @@
+seed: 1234
+device: auto
+model:
+  bit_dim: 128
+  latent_channels: 4
+  latent_size: 64
+  encoder_base_channels: 64
+  decoder_base_channels: 16
+  decoder_channels:
+  - 16
+  - 32
+  - 64
+  - 128
+  discriminator_base_channels: 32
+  discriminator_channels:
+  - 32
+  - 64
+  - 128
+  - 256
+train:
+  total_steps: 224000
+  batch_size: 1024
+  learning_rate: 0.0001
+  weight_decay: 1.0e-05
+  betas:
+  - 0.9
+  - 0.999
+  grad_clip_norm: 1.0
+  mixed_precision: true
+  log_interval: 20
+  save_interval: 2000
+  visualize_interval: 200
+  output_dir: outputs/codec
+  num_workers: 0
+gan:
+  lambda_adv: 0.01
+  adversarial_loss: wgan_gp
+  hinge_margin: 1.0
+  gradient_penalty_weight: 10.0
+  real_label: 1.0
+  fake_label: 0.0
+  discriminator_learning_rate: 0.0001
+  discriminator_weight_decay: 1.0e-05
+  discriminator_betas:
+  - 0.0
+  - 0.9
+  discriminator_grad_clip_norm: 0.0
+  adaptive_discriminator_lr: false
+  adaptive_discriminator_strong_acc: 0.75
+  adaptive_discriminator_very_strong_acc: 0.9
+  adaptive_discriminator_min_lr_scale: 0.05
+loss:
+  lambda_bit: 1
+  encoder_bit_gate_low: 0.98
+  encoder_bit_gate_high: 1.0
+  lambda_dist: 0.2
+  lambda_kl: 0.2
+  lambda_tail: 0
+  lambda_freq: 0.0
+  lambda_spectral_band: 0.0
+  lambda_sign_spectrum: 0.0
+  lambda_mi: 0.0
+  lambda_same_position_channel_corr: 0.0
+  lambda_mean: 0.0
+  lambda_batch_position_kl: 0.2
+  lambda_fft_autocorr: 0.0
+  freq_entropy_target: 7.895
+  spectral_band_tolerance: 0.15
+  spectral_band_ignore_dc: true
+  sign_spectrum_temperature: 0.5
+  sign_spectrum_lower: 0.9
+  sign_spectrum_upper: 1.1
+  sign_spectrum_topk: 32
+  sign_spectrum_topk_weight: 1.0
+  sign_spectrum_ignore_dc: true
+  same_position_channel_corr_tolerance: 0.08
+  same_position_channel_corr_eps: 1.0e-06
+  fft_autocorr_topk: 32
+  fft_autocorr_topk_weight: 1.0
+  fft_autocorr_peak_target: 0.08
+  fft_autocorr_peak_weight: 16.0
+  fft_autocorr_eps: 1.0e-06
+  dist_sample_ratio: 0.25
+  dist_num_bins: 64
+  dist_value_range: 4.0
+  dist_hist_chunk_size: 128
+  tail_value_range: 3.0
+  batch_position_kl_eps: 1.0e-06
+  local_mean_target: 0.0156
+  local_mean_patch_size: 8
+  local_mean_num_patches: 20
+randomness_eval:
+  enabled: true
+  max_samples: 128
+  eps: 1.0e-06
+attack:
+  probabilities:
+    gaussian: 0.28
+    normalized_gaussian: 0.28
+    mask: 0.17
+    random_drop: 0.17
+    channel_dropout: 0.05
+    affine: 0.025
+  gaussian_lambda_range:
+  - 3.0
+  - 3.5
+  normalized_gaussian_lambda_range:
+  - 2.0
+  - 2.5
+  mask_ratio_range:
+  - 0.4
+  - 0.6
+  drop_ratio_range:
+  - 0.3
+  - 0.5
+  channel_drop_count_range:
+  - 1
+  - 1
+  affine_scale_range:
+  - 0.75
+  - 1.25
+  affine_shift_range:
+  - -0.25
+  - 0.25
